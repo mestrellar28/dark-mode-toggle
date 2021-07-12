@@ -21,7 +21,7 @@ body {
       --card-main-btn: hsl(5, 90%, 50%);
       --card-alt-btn: hsl(0, 0%, 60%);
       --dark-btn-bg: hsl(30, 90%, 60%);
-      --dark-btn-fg: hsl(0, 0%, 100%);
+      --dark-btn-fg: hsl(0, 0%, 10%);
    }
 }
 
@@ -53,12 +53,18 @@ body {
 
 // navigation
 .navigation {
+   display: none;
    margin-right: 3rem;
 
    a {
       &:not(:last-child) {
          margin-right: 2rem;
       }
+   }
+
+   // responsive
+   @include breakpoint(ipad) {
+      display: block;
    }
 }
 
