@@ -1,1 +1,168 @@
 @use './scss/_index' as *;
+
+// body
+body {
+   --body-bg: hsl(0, 0%, 90%);
+   --nav-bg: hsl(0, 0%, 100%);
+   --nav-fg: hsl(0, 0%, 0%);
+   --card-bg: hsl(0, 0%, 100%);
+   --card-main-btn: hsl(230, 90%, 50%);
+   --card-alt-btn: hsl(0, 0%, 60%);
+   --dark-btn-bg: hsl(230, 60%, 30%);
+   --dark-btn-fg: hsl(0, 0%, 100%);
+   background: var(--body-bg);
+   transition: background 0.35s ease;
+
+   &.dark {
+      --body-bg: hsl(0, 0%, 10%);
+      --nav-bg: hsl(0, 0%, 20%);
+      --nav-fg: hsl(0, 0%, 100%);
+      --card-bg: hsl(0, 0%, 20%);
+      --card-main-btn: hsl(5, 90%, 50%);
+      --card-alt-btn: hsl(0, 0%, 60%);
+      --dark-btn-bg: hsl(30, 90%, 60%);
+      --dark-btn-fg: hsl(0, 0%, 100%);
+   }
+}
+
+// main container
+.main-container {
+   max-width: 80rem;
+   width: 90%;
+   margin: 0 auto;
+   padding-top: 4rem;
+   padding-bottom: 4rem;
+}
+
+// navbar
+.navbar {
+   background: var(--nav-bg);
+   color: var(--nav-fg);
+   padding: 1rem 2rem;
+   margin-bottom: 3rem;
+   display: flex;
+   align-items: center;
+   transition: background 0.35s ease;
+}
+
+// log
+.logo {
+   margin-right: auto;
+   font-weight: 700;
+}
+
+// navigation
+.navigation {
+   margin-right: 3rem;
+
+   a {
+      &:not(:last-child) {
+         margin-right: 2rem;
+      }
+   }
+}
+
+// dark mode
+.darkmode-button {
+   --size: 4rem;
+   position: relative;
+   background: var(--dark-btn-bg);
+   border-radius: 3rem;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   width: var(--size);
+   height: calc(var(--size) / 2);
+   outline: none;
+
+   &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(var(--size) / 2);
+      height: calc(var(--size) / 2);
+      background: hsl(0, 0%, 100%);
+      box-shadow: 1px 1px 5px hsl(0, 0%, 10%);
+      border-radius: 3rem;
+   }
+
+   &.active {
+      background: var(--dark-btn-bg);
+
+      &::after {
+         transform: translateX(100%);
+      }
+
+      .icon {
+         fill: var(--dark-btn-fg);
+      }
+   }
+
+   .icon {
+      fill: var(--dark-btn-fg);
+      width: 1.25rem;
+      height: 1.25rem;
+   }
+}
+
+// cards grid
+.grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+
+// card
+.card {
+   background: var(--card-bg);
+   margin: 2rem 1rem;
+   border-radius: 0.5rem;
+   overflow: hidden;
+   transition: background 0.35s ease;
+}
+
+// card image
+.card-image {
+   position: relative;
+   width: 100%;
+   height: 350px;
+   padding-bottom: 60%;
+   overflow: hidden;
+
+   .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+}
+
+// card actions
+.card-actions {
+   padding: 2rem 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+// card buttons
+.card-button {
+   width: calc(50% - 1rem);
+   padding: 1rem 0;
+   color: #fff;
+   border-radius: 0.25rem;
+   transition: background 0.35s ease;
+
+   &.share {
+      background: var(--card-main-btn);
+   }
+
+   &.view {
+      background: var(--card-alt-btn);
+   }
+}
